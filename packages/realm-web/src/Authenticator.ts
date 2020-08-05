@@ -21,6 +21,8 @@ import { Storage } from "./storage";
 import { OAuth2Helper } from "./OAuth2Helper";
 import { Credentials } from "./Credentials";
 
+// TODO: Add the deviceId to the auth response.
+
 /**
  * The response from an authentication request.
  */
@@ -36,7 +38,7 @@ export type AuthResponse = {
     /**
      * The refresh token for the session.
      */
-    refreshToken: string;
+    refreshToken: string | null;
 };
 
 /**
@@ -89,16 +91,13 @@ export class Authenticator {
             const {
                 user_id: userId,
                 access_token: accessToken,
-                refresh_token: refreshToken,
+                refresh_token: refreshToken = null,
             } = response;
             if (typeof userId !== "string") {
                 throw new Error("Expected a user id in the response");
             }
             if (typeof accessToken !== "string") {
                 throw new Error("Expected an access token in the response");
-            }
-            if (typeof refreshToken !== "string") {
-                throw new Error("Expected a refresh token in the response");
             }
             return { userId, accessToken, refreshToken };
         }
