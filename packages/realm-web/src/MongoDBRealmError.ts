@@ -41,6 +41,10 @@ export class MongoDBRealmError extends Error {
      */
     public readonly statusText: string;
     /**
+     * Any application-level error message.
+     */
+    public readonly error: string | undefined;
+    /**
      * Any application-level error code.
      */
     public readonly error: string | undefined;
