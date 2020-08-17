@@ -244,7 +244,7 @@ export class User<
     public async linkCredentials(credentials: Credentials) {
         const response = await this.app.authenticator.authenticate(
             credentials,
-            this,
+            true,
         );
         // Update the access token
         this.accessToken = response.accessToken;

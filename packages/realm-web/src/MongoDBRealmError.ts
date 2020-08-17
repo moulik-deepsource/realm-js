@@ -47,10 +47,6 @@ export class MongoDBRealmError extends Error {
     /**
      * Any application-level error code.
      */
-    public readonly error: string | undefined;
-    /**
-     * Any application-level error code.
-     */
     public readonly errorCode: string | undefined;
     /**
      * Any application-level (URL) link containing details about the error.
